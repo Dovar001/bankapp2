@@ -1,6 +1,8 @@
 package stats
 
-import "github.com/Dovar001/bank/pkg/bank/types"
+import (
+	"github.com/Dovar001/bank/pkg/bank/types"
+)
 
 //Avg расчитивает средную сумму платежа
 
@@ -16,4 +18,18 @@ func Avg(payments [] types.Payment)  types.Money{
 	}
 	mid=mid/a
 	return mid
+}
+
+func TotalInCategory(payments []types.Payment , category types.Category) types.Money{
+
+       var totalincat types.Money	
+     for _, operation := range payments {
+		 
+		if (operation.Category == category){
+			totalincat +=operation.Amount
+
+		}
+		 
+	 }
+	 return totalincat 
 }
